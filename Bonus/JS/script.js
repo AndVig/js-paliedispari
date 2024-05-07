@@ -55,10 +55,9 @@ function palindromeValidator(){
 
 const pariInvia=document.getElementById('pariInvia');
 const dispariInvia=document.getElementById('dispariInvia'); 
-let inputNum = document.getElementById ('num');
+const inputNum = document.getElementById ('num');
 const nEsito=document.getElementById('nEsito');
 let pari=true;
-inputNum=parseInt(inputNum.value);
 //Distinzione pari=true dispari=false
 pariInvia.addEventListener('click',function(){
     pari=true;
@@ -66,21 +65,41 @@ pariInvia.addEventListener('click',function(){
 dispariInvia.addEventListener('click',function(){
     pari=false;
 })
-
 pariInvia.addEventListener('click',pod)
 dispariInvia.addEventListener('click',pod)
 
 function pod(){
-    
+    console.log(pari);
     random=getRndInteger(1,5);
-    sum=inputNum+random;
-    console.log("input: "+inputNum+" random: "+random+" sum: "+sum);
-    if((sum%2==0)===pari){
-        nEsito.innerHTML='hai vinto'
+    console.log(random);
+    if(pari){
+        if(random%2==0){
+            console.log(pari, random);
+            nEsito.innerHTML= 'Hai Vinto';
+        }else{
+            console.log(pari, random);
+            nEsito.innerHTML= 'Hai Perso';
+        }
     }else{
-        nEsito.innerHTML='hai perso'
+        if(random%2==0){
+            console.log(pari, random);
+            nEsito.innerHTML= 'Hai Perso';
+        }else{
+            console.log(pari, random);
+            nEsito.innerHTML= 'Hai Vinto';
+        }
     }
 }
+// function pod(){
+//     console.log(pari);
+//     random=getRndInteger(1,5);
+//     console.log(random);
+//     if(pari===(random%2==0)){
+//         nEsito.innerHTML= 'Hai Vinto';
+//     }else{
+//         nEsito.innerHTML= 'Hai Perso';
+//     }
+// }
 // utility
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
